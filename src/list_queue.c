@@ -1,4 +1,5 @@
 #include "list_queue.h"
+#include <stdlib.h>
 
 void init_queue(queue *q)
 {
@@ -30,6 +31,17 @@ int dequeue(queue *q)
 {
   // Add your dequeue function
   int temp = q->front->data;
-  while 
-  return(temp)
+  qnode *finder = malloc(sizeof(qnode));
+  finder->next = q->rear;
+  while(finder->next != q->front)
+  {
+    finder->next = finder->next->next;
+    if (finder->next==finder->next->next) {
+      printf("bruh");
+    }
+  }
+  q->front = finder;
+  q->front->next = NULL;
+
+  return(temp);
 }
