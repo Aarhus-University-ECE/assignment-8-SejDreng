@@ -1,0 +1,6 @@
+Exercise 1
+
+a) The loop runs 5 times, and one operator is used inside the loop for every run. The int i is also run 5 times in the loop-conditions.
+   That means 10 operators is used in the calculation.
+
+b) If the trend continues, than the amount of oprerators will always be double the number, therefore op = n*2.
