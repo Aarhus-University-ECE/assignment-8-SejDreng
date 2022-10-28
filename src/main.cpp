@@ -11,34 +11,36 @@ void test_q (queue *q, int x, int x0, int x1, int y, int y0, int y1)
     init_queue(temp);
     if (empty(temp) == 1)
     {
-        printf("true");
+        printf("true\n");
     }
     else
     {
-        printf("false");
+        printf("false\n");
     }
     temp = q;
 
     enqueue(temp,x); y = dequeue(temp);
     if (temp == q && x == y)
     {
-        printf("true");
+        printf("true\n");
     }
     else 
     {
-        printf("false");
+        printf("false\n");
     }
 
-    enqueue(temp, x0); enqueue(temp, x1);
-    y0 = dequeue(temp); y1 = dequeue(temp);
+    enqueue(temp, x0);
+    enqueue(temp, x1);
+    y0 = dequeue(temp); 
+    y1 = dequeue(temp);
 
     if(temp == temp)
     {
-        printf("true");
+        printf("true\n");
     }
     else
     {
-        printf("false");
+        printf("false\n");
     }
     printf("%d is %d, and %d is %d\n",x0,y0,x1,y1);
 
@@ -66,8 +68,8 @@ int main(int argc, char **argv)
     int x0 = 2;
     int x1 = 3; 
     int y = 4;
-    int y0 = 5;
-    int y1 = 6;
+    int y0 = 0;
+    int y1 = 0;
     queue *q;
 
     test_q(q,x,x0,x1,y,y0,y1);

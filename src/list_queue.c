@@ -22,69 +22,52 @@ int empty(queue *q)
 
 void enqueue(queue *q, int x)
 {
-  qnode *second_last = malloc(sizeof(qnode));
-  if(empty(q)==0){
-    second_last = q->rear;
-    q->rear->next = second_last;
-    q->rear->data = x;
+  qnode *new_objekt = malloc(sizeof(qnode));
+  new_objekt->data=x;
+
+  if (q->size==0)
+  {
+    q->front = new_objekt;
+    q->front->next = NULL;
+    q->rear = new_objekt;
+  }
+  else if(q->size == 1)
+  {
+    q->rear = new_objekt;
+    new_objekt->next = q->front;
   }
   else
   {
-    second_last->data = x;
-    second_last->next = NULL;
-    q->front = second_last;
-    q->rear = second_last;
+     new_objekt->next = q->rear;
+     q->rear = new_objekt;
   }
   q->size++;
+
 }
 
 int dequeue(queue *q)
 {
-  /*
-  // Add your dequeue function
-  if(empty(q) == 0){
   int temp = q->front->data;
-  qnode *finder = malloc(sizeof(qnode));
-  finder->next = q->rear;
-  while(finder->next != q->front)
+  if(q->size == 0)
   {
-    finder->next = finder->next->next;
+    printf("bruh, køen er tom.\n");
   }
-  q->front = finder;
-  q->front->next = NULL;
-  q->size = q->size - 1;
+  else if (q->size == 1)
+  {
+    q->front = NULL;
+    q->rear = NULL;
   }
   else
-  printf("dude, is empty");
-
-
-
-  return ();*/
-
-  if (empty(q)==1) {
-    return 0;
+  {
+    qnode *finder = malloc(sizeof(qnode));
+    finder->next = q->rear;
+    while(finder->next->next != q->front)
+    {
+      finder = finder->next;
+    }
+    q->front = finder->next;
   }
-
-  int return_value = q->front->data;
-
-  qnode *finder = malloc(sizeof(qnode));
-  finder = q->rear;
-  while (finder->next != q->front) {
-    finder->next=finder->next->next;
-  }
-
-  if (q->size == 1){
-    q->size=0;
-    q->front=NULL;
-    q->rear=NULL;
-    return return_value;
-  } else {
-    q->front=finder;
-    q->front->next=NULL;
-    q->size-=1;
-    return return_value;
-  }
-
-
-
+    q->size = q->size-1;
+  return(temp);
 }
+
